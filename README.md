@@ -35,3 +35,14 @@ PROMPTS für den Langgraph Engineer:
 
 2. 
 
+
+
+
+To run the backend (WIP instructions, OS X, Linux):
+
+python -m venv hackathon-env
+source hackathon-env/bin/activate
+cd backend
+pip install -r requirements.txt
+pip install -e .
+cd whisper_streaming

@@ -13,7 +13,8 @@ import kibe_backend
 
 
 logger = logging.getLogger(__name__)
-SEND_TO_LLM = False
+
+SEND_TO_LLM = True
 
 @lru_cache
 def load_audio(fname):
@@ -387,7 +388,7 @@ class OnlineASRProcessor:
         o = self.transcript_buffer.flush()
         self.commited.extend(o)
         completed = self.to_flush(o)
-        logger.debug(f">>>>COMPLETE NOW: {completed}")
+        logger.info(f">>>>COMPLETE NOW: {completed}")
         # print('>>>commited {}'.format(self.commited))
 
         if completed[2]:
