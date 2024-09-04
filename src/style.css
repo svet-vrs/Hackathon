@@ -12,25 +12,28 @@
 /* Header Section */
 .app-header {
   width: 100%;
-  padding: 20px;
   background-color: #009639; /* Neutral green */
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top:10px;
+  padding-bottom:5px;
+  height: 50px;
 }
 
 .app-header h1 {
   color: white;
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 /* Main Content */
 .main-content {
-  width: 80%;
-  margin: 20px 0;
+  width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: calc(100vh - 50px);
 }
 
 /* Content container for Chat and PDF viewer side by side */
@@ -43,14 +46,13 @@
 /* Chat Box */
 .chat-box {
   background-color: white;
-  width: 45%;
+  width: 100%;
   max-height: 500px;
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: 20px;
   overflow-y: auto;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  margin-right: 20px;
 }
 
 .advisor-message {
@@ -63,6 +65,11 @@
   color: #333; /* Default for customer */
   margin-bottom: 10px;
   font-weight: bold;
+}
+
+.content
+{
+  width: 100%;
 }
 
 /* PDF Viewer */
