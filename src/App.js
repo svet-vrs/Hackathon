@@ -1,10 +1,9 @@
-// App.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ChatTranscription from './ChatTranscription';
 import PdfViewer from './PdfViewer';
 import PopUp from './PopUp';
 import { insertCustomerDataIntoPdf } from './pdfUtils';
-import { dialogues } from './dialogues';  // Import the dialogues from the separate file
+import dialogues from './dialogues';
 import './style.css';
 
 function App() {
@@ -15,6 +14,7 @@ function App() {
   const [pdfUrl, setPdfUrl] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [showPflegeantragPopup, setShowPflegeantragPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Added loading state
 
   // Add message to the chat window
   const addMessage = (newMessage) => {
@@ -74,16 +74,25 @@ function App() {
     }
   };
 
-  // When the user clicks "Ja" on the popup, the PDF will be filled with data and shown
+  // Simulate data collection and show a loading screen before showing the PDF
+  const simulateLoadingAndShowPdf = () => {
+    setIsLoading(true); // Start loading
+    setTimeout(() => {
+      insertCustomerDataIntoPdf(setPdfUrl, setShowPdf); // Insert customer data and show PDF
+      setIsLoading(false); // End loading after "data collection"
+    }, 2000); // Simulate a 2-second loading time
+  };
+
+  // When the user clicks "Ja" on the popup, the PDF will be shown after loading
   const handleOpenPflegeantrag = () => {
     setShowPflegeantragPopup(false);
-    insertCustomerDataIntoPdf(setPdfUrl, setShowPdf); // Insert customer data and show PDF
+    simulateLoadingAndShowPdf(); // Simulate loading and then open PDF
   };
 
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>KIBA - KI Beratungsanwendung</h1>
+        <h1>KIBA - KI Beratungs Assistent</h1> {/* Updated Title */}
       </header>
       <div className="main-content ">
         <div className='row content'>
@@ -95,7 +104,15 @@ function App() {
               {showPdf && <PdfViewer pdfUrl={pdfUrl} />}
           </div>
         </div>
-    
+      
+
+        {/* Show loading screen when the PDF is being prepared */}
+        {isLoading && (
+          <div className="loading-screen">
+            <p>Wir sammeln Ihre Daten und füllen den Antrag aus...</p>
+            <div className="spinner"></div>
+          </div>
+        )}
         {/* Popup for opening Pflegeantrag */}
 
         {/* Simulate Next Step */}
