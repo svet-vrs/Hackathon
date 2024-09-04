@@ -9,8 +9,11 @@ import logging
 import io
 import soundfile as sf
 import math
+import kibe_backend
+
 
 logger = logging.getLogger(__name__)
+SEND_TO_LLM = False
 
 @lru_cache
 def load_audio(fname):
@@ -341,6 +344,8 @@ class OnlineASRProcessor:
         self.transcript_buffer.last_commited_time = self.buffer_time_offset
         self.commited = []
 
+        self.whole_conversation = []
+
     def insert_audio_chunk(self, audio):
         self.audio_buffer = np.append(self.audio_buffer, audio)
 
@@ -368,7 +373,7 @@ class OnlineASRProcessor:
         Returns: a tuple (beg_timestamp, end_timestamp, "text"), or (None, None, ""). 
         The non-emty text is confirmed (committed) partial transcript.
         """
-
+        # "prompt" is only used by this function!
         prompt, non_prompt = self.prompt()
         logger.debug(f"PROMPT: {prompt}")
         logger.debug(f"CONTEXT: {non_prompt}")
@@ -383,8 +388,13 @@ class OnlineASRProcessor:
         self.commited.extend(o)
         completed = self.to_flush(o)
         logger.debug(f">>>>COMPLETE NOW: {completed}")
-        # arthur
-        from kibe_backend import 
+        # print('>>>commited {}'.format(self.commited))
+
+        if completed[2]:
+            self.whole_conversation.append(completed[2])
+            if SEND_TO_LLM:
+                result_from_llm = kibe_backend.process_conversation(self.whole_conversation)
+
         the_rest = self.to_flush(self.transcript_buffer.complete())
         logger.debug(f"INCOMPLETE: {the_rest}")
 
