@@ -9,7 +9,7 @@ import logging
 import io
 import soundfile as sf
 import math
-import kibe_backend
+import kiba_backend
 
 
 logger = logging.getLogger(__name__)
@@ -394,7 +394,16 @@ class OnlineASRProcessor:
         if completed[2]:
             self.whole_conversation.append(completed[2])
             if SEND_TO_LLM:
-                result_from_llm = kibe_backend.process_conversation(self.whole_conversation)
+                result_from_llm = kiba_backend.process_conversation(self.whole_conversation)
+                print('>>>> RESULT FROM LLM >>>>')
+                print(result_from_llm)
+                if 'ACTION=' in result_from_llm:
+                    action = result_from_llm.split('ACTION=')[1].split('\n')[0].split(';')[0]
+                    result_from_action = kiba_backend.carry_out_HIL_action(action)
+                    print('>>>> RESULT FROM ACTION >>>>')
+                    print(result_from_action)
+
+        input()
 
         the_rest = self.to_flush(self.transcript_buffer.complete())
         logger.debug(f"INCOMPLETE: {the_rest}")

@@ -1,0 +1,11 @@
+[project]
+name = "kiba_backend"
+description = "kiba_backend"
+version = "0.0.1"
+
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools]
+packages = ["kiba_backend"]
