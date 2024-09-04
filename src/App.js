@@ -5,6 +5,7 @@ import PopUp from './PopUp';
 import { insertCustomerDataIntoPdf } from './pdfUtils';
 import dialogues from './dialogues';
 import './style.css';
+import logo from "./img/logo12_1.png";
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -92,6 +93,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
+        <img width={50} src={logo}/>
         <h1>KIBA - KI Beratungs Assistent</h1> {/* Updated Title */}
         <div className="beraterName">Melanie Müller</div>
         <div class="user-icon d-flex justify-content-center align-items-center">
