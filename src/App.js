@@ -94,9 +94,18 @@ function App() {
       <header className="app-header">
         <h1>KIBA - KI Beratungs Assistent</h1> {/* Updated Title */}
       </header>
-      <div className="main-content">
-        <ChatTranscription messages={messages} isTyping={isTyping} currentMessage={currentMessage} />
-        
+      <div className="main-content ">
+        <div className='row content'>
+          <div className='col-6'>
+            <ChatTranscription messages={messages} isTyping={isTyping} currentMessage={currentMessage} /> 
+            {showPflegeantragPopup && <PopUp handleOpenPflegeantrag={handleOpenPflegeantrag} />}
+          </div>
+          <div className="col-6">
+              {showPdf && <PdfViewer pdfUrl={pdfUrl} />}
+          </div>
+        </div>
+      
+
         {/* Show loading screen when the PDF is being prepared */}
         {isLoading && (
           <div className="loading-screen">
@@ -104,11 +113,7 @@ function App() {
             <div className="spinner"></div>
           </div>
         )}
-
-        {showPdf && <PdfViewer pdfUrl={pdfUrl} />}
-
         {/* Popup for opening Pflegeantrag */}
-        {showPflegeantragPopup && <PopUp handleOpenPflegeantrag={handleOpenPflegeantrag} />}
 
         {/* Simulate Next Step */}
         <div className="simulation-controls">
