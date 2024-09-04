@@ -89,15 +89,13 @@ function App() {
         <div className='row content'>
           <div className='col-6'>
             <ChatTranscription messages={messages} isTyping={isTyping} currentMessage={currentMessage} /> 
-            {showPflegeantragPopup && <PopUp handleOpenPflegeantrag={handleOpenPflegeantrag} />}
           </div>
           <div className="col-6">
+              {showPflegeantragPopup && <PopUp handleOpenPflegeantrag={handleOpenPflegeantrag} />}
               {showPdf && <PdfViewer pdfUrl={pdfUrl} />}
           </div>
         </div>
-      
-
-
+    
         {/* Popup for opening Pflegeantrag */}
 
         {/* Simulate Next Step */}

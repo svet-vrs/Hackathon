@@ -48,6 +48,7 @@
   background-color: white;
   width: 100%;
   max-height: 500px;
+  height: 100%;
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: 20px;
@@ -56,20 +57,27 @@
 }
 
 .advisor-message {
-  color: #007f32; /* Green for the advisor */
+  color: white; /* Green for the advisor */
   margin-bottom: 10px;
   font-weight: bold;
+  background-color: #007f32;
+  padding: 8px;
+  border-radius: 0px 10px 10px 10px;
 }
 
 .customer-message {
-  color: #333; /* Default for customer */
+  color: #ffffff;
   margin-bottom: 10px;
   font-weight: bold;
+  background-color: #6e6e6e;
+  padding: 8px;
+  border-radius: 10px 10px 0px 10px;
 }
 
 .content
 {
   width: 100%;
+  height:100%;
 }
 
 /* PDF Viewer */
