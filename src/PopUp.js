@@ -1,16 +1,12 @@
-// PopUp.js
+//#PopUp.js
 import React from 'react';
 
-const PopUp = ({ showPflegeantragPopup, handleOpenPflegeantrag }) => {
+const PopUp = ({ handleOpenPflegeantrag }) => {
   return (
-    <>
-      {showPflegeantragPopup && (
-        <div className="pflegeantrag-popup">
-          <p>Pflegeantrag öffnen?</p>
-          <button onClick={handleOpenPflegeantrag}>Ja</button>
-        </div>
-      )}
-    </>
+    <div className="pflegeantrag-popup">
+      <p>Pflegeantrag öffnen?</p>
+      <button onClick={handleOpenPflegeantrag}>Ja</button>
+    </div>
   );
 };
 
