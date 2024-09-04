@@ -60,16 +60,16 @@
   color: white; /* Green for the advisor */
   margin-bottom: 10px;
   font-weight: bold;
-  background-color: #007f32;
+  background-color: #009639;
   padding: 8px;
   border-radius: 0px 10px 10px 10px;
 }
 
 .customer-message {
-  color: #ffffff;
+  color: #3e3e3e;
   margin-bottom: 10px;
   font-weight: bold;
-  background-color: #6e6e6e;
+  background-color: #cccccc;
   padding: 8px;
   border-radius: 10px 10px 0px 10px;
 }
@@ -82,12 +82,12 @@
 
 /* PDF Viewer */
 .pdf-viewer {
-  width: 50%;
+  width: 100%;
   max-height: 500px;
   border: 1px solid #ccc;
   overflow-y: auto;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  /* padding: 20px; */
   background-color: white;
   border-radius: 10px;
 }
