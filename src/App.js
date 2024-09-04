@@ -37,7 +37,7 @@ function App() {
         clearInterval(typingInterval);
         addMessage(displayedMessage.trim()); // Add full message to the chat
       }
-    }, 300); // Delay between each word
+    }, 200); // Delay between each word
   };
 
   // Handle actions triggered by specific dialogues
@@ -93,10 +93,37 @@ function App() {
     <div className="app-container">
       <header className="app-header">
         <h1>KIBA - KI Beratungs Assistent</h1> {/* Updated Title */}
+        <div className="beraterName">Melanie Müller</div>
+        <div class="user-icon d-flex justify-content-center align-items-center">
+            <i class="fas fa-user"></i>
+        </div>
       </header>
       <div className="main-content ">
         <div className='row content'>
           <div className='col-6'>
+            <div className='kundenBox'>
+                <div className="kundenInfos">
+                  <h5>Kundeninformationen</h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Vorname</th>
+                        <th>Geburtsdatum</th>
+                        <th>Adressinformationen</th>
+                      </tr>
+                    </thead>
+                  <tbody>
+                    <tr>
+                      <td>Max</td>
+                      <td>Mustermann</td>
+                      <td>05.09.1974</td>
+                      <td>Augustusplatz 1, 04109 Leipzig</td>
+                    </tr>
+                  </tbody>
+                  </table>
+                </div>
+            </div>
             <ChatTranscription messages={messages} isTyping={isTyping} currentMessage={currentMessage} /> 
           </div>
           <div className="col-6">

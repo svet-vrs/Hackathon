@@ -5,9 +5,14 @@ const ChatTranscription = ({ messages, isTyping, currentMessage }) => {
     <div className="chat-box">
       <div className="messages">
         {messages.map((msg, index) => (
-          <div key={index} className={msg.includes('Kundenberater') ? 'advisor-message' : 'customer-message'}>
-            {msg}
+          <div key={index}>
+            <div className='beraterLbl'>{msg.includes('Kundenberater') ? 'Kundenberater' : ''}</div>
+            <div className='kundeLbl'>{msg.includes('Kundenberater') ? '' : 'Kunde'}</div>
+            <div className={msg.includes('Kundenberater') ? 'advisor-message' : 'customer-message'}>
+              {msg}
+            </div>   
           </div>
+
         ))}
         {isTyping && <div>{currentMessage}</div>}
       </div>
